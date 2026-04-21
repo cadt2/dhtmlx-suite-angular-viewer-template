@@ -1,5 +1,6 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, ViewChild, Inject } from '@angular/core';
 import { Layout } from 'dhx-suite';
+import { AuthService } from '../../core/state/auth.service';
 
 @Component({
   selector: 'app-viewer-module',
@@ -27,6 +28,8 @@ export class ViewerModuleComponent implements AfterViewInit, OnDestroy {
   @ViewChild('layoutHost', { static: true }) layoutHost!: ElementRef<HTMLElement>;
   private layout?: Layout;
 
+  constructor(@Inject(AuthService) private authService: AuthService) {}
+
   ngAfterViewInit(): void {
     void this.initializeLayout();
   }
@@ -40,5 +43,13 @@ export class ViewerModuleComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.layout?.destructor();
+  }
+
+  ngOnInit() {
+    // Example: Check if the user has permission to view the viewer layout
+    const hasAccess = this.authService.hasPermission(['admin', 'viewer']);
+    if (!hasAccess) {
+      console.warn('User does not have access to the viewer layout');
+    }
   }
 }

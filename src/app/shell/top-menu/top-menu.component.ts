@@ -8,6 +8,8 @@ import {
   viewChild
 } from '@angular/core';
 import { setTheme, Toolbar } from 'dhx-suite';
+import { AuthService } from '../../core/state/auth.service';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-shell-top-menu',
@@ -32,6 +34,16 @@ export class TopMenuComponent implements AfterViewInit, OnDestroy {
   private readonly topMenuHost = viewChild.required<ElementRef<HTMLElement>>('topMenuHost');
   private readonly themeItemId = 'theme-select';
   private topMenu?: Toolbar;
+
+  constructor(@Inject(AuthService) private authService: AuthService) {}
+
+  ngOnInit() {
+    // Example: Check if the user has permission to view the top menu
+    const hasAccess = this.authService.hasPermission(['admin', 'viewer']);
+    if (!hasAccess) {
+      console.warn('User does not have access to the top menu');
+    }
+  }
 
   ngAfterViewInit(): void {
     this.topMenu = new Toolbar(this.topMenuHost().nativeElement, {

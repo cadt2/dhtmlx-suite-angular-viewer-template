@@ -90,3 +90,20 @@ Current config files:
 4. Version the config contract to support safe rollout and rollback.
 
 This approach preserves the UI design system while enabling long-term scalability and maintainability.
+
+### User Permissions (Demonstration)
+
+This template includes a demonstration of how to implement user role-based permissions for the Sidebar, Top Menu, and Viewer Layout components. The permissions are defined in the JSON configuration files and checked in the components using the `AuthService`.
+
+#### How It Works
+1. **Permissions in JSON**: Each component's configuration file includes a `permissions` field that specifies the roles allowed to access it.
+2. **AuthService**: The `AuthService` provides a method `hasPermission()` to check if the current user has the required roles.
+3. **Component Logic**: Each component checks the permissions during initialization and logs a warning if the user does not have access.
+
+#### Example
+- Sidebar: Allowed roles are `admin` and `editor`.
+- Top Menu: Allowed roles are `admin` and `viewer`.
+- Viewer Layout: Allowed roles are `admin` and `viewer`.
+
+#### Static Mode
+By default, the template operates in static mode, and the permission checks are for demonstration purposes only. To enable dynamic role-based access, integrate the `AuthService` with a backend authentication system.

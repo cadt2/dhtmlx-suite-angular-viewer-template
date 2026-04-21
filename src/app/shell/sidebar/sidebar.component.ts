@@ -10,6 +10,8 @@ import {
 import { Sidebar } from 'dhx-suite';
 import { ENVIRONMENTS } from '../../core/config/environments.config';
 import { DEFAULT_ENVIRONMENT, type EnvironmentId } from '../../core/models/environment.model';
+import { AuthService } from '../../core/state/auth.service';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-shell-sidebar',
@@ -36,6 +38,8 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
   private selectedEnvironmentId = this.defaultEnvironmentId;
   private readonly sidebarHost = viewChild.required<ElementRef<HTMLElement>>('sidebarHost');
   private sidebar?: Sidebar;
+
+  constructor(@Inject(AuthService) private authService: AuthService) {}
 
   ngAfterViewInit(): void {
     this.sidebar = new Sidebar(this.sidebarHost().nativeElement, {
