@@ -6,7 +6,7 @@ This starter uses the open-source version of DHTMLX Suite (NPM package: `dhx-sui
 
 ## UI Preview
 
-![Viewer UI Screenshot](docs/assets/screenshots/screenshots-01.png)
+![Viewer UI Screenshot](docs/assets/screenshots/screenshot-02.png)
 
 *Preview v0.3.0 - Config-Driven UI Baseline*
 
