@@ -29,23 +29,25 @@ export class ViewerModuleComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.layout = new Layout(this.layoutHost.nativeElement, {
-      type: 'wide',
+      type: 'line',
       cols: [
         {
-          id: 'C1',
+          id: 'model-browser',
           width: 220,
-          html: '<div style="height:100%;width:100%;display:flex;align-items:center;justify-content:center;">Assembly Browser</div>',
+          header: 'MODEL BROWSER',
+          collapsable: true,
+          resizable: true
         },
         {
-          type: 'line',
+          type: 'none',
           rows: [
             {
-              id: 'C2',
+              id: 'viewer-tools',
               height: 55,
               html: '<div style="height:100%;width:100%;display:flex;align-items:center;justify-content:center;">Viewer Tools</div>',
             },
             {
-              id: 'C3',
+              id: 'main-viewer-area',
               html: '<div style="height:100%;width:100%;display:flex;align-items:center;justify-content:center;">Main Viewer Area</div>',
             },
           ]

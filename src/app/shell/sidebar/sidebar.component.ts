@@ -50,11 +50,11 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
           id: 'userInfo',
           css: 'user-info-item',
           html:
-            "<div class='user-info-container'>" +
-            "<img class='user-info-avatar' src='https://snippet.dhtmlx.com/codebase/data/common/img/02/avatar_62.jpg' alt='Gloria McKinney'/>" +
-            "<div class='user-info-title'>Gloria McKinney</div>" +
-            "<div class='user-info-contact'>@gmckinney</div>" +
-            '</div>'
+              "<div class='user-info-container'>" +
+              "<img class='user-info-avatar' src='/imgs/HEADSHOTS-MINI.jpg' alt='Leo Gomez'/>" +
+              "<div class='user-info-title'>Leo Gomez</div>" +
+              "<div class='user-info-contact'>@cadt2</div>" +
+              '</div>'
         },
         { type: 'separator' },
         ...ENVIRONMENTS.map((environment) => ({
