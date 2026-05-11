@@ -122,3 +122,16 @@ This template includes a demonstration of how to implement user role-based permi
 
 #### Static Mode
 By default, the template operates in static mode, and the permission checks are for demonstration purposes only. To enable dynamic role-based access, integrate the `AuthService` with a backend authentication system.
+
+## License and Compliance
+
+This project is distributed under the GNU General Public License v2.0.
+
+- Project license: GPL-2.0-only (`LICENSE`)
+- Third-party dependency inventory: `THIRD_PARTY_LICENSES.md`
+- License inventory generation: `npm run licenses:generate`
+- Compliance check: `npm run licenses:check`
+
+Because this template includes `dhx-suite` in its GPL distribution form, redistribution should keep the same GPL compliance posture unless you replace that dependency with a commercially licensed alternative.
+
+Copyright (c) 2026 CADT2

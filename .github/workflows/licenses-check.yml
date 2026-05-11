@@ -1,0 +1,31 @@
+name: License Compliance Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  license-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify required compliance files
+        run: |
+          test -f LICENSE
+          test -f THIRD_PARTY_LICENSES.md
+
+      - name: Verify third-party inventory is up to date
+        run: npm run licenses:check
